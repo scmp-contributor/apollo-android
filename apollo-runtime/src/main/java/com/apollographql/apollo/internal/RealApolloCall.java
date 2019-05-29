@@ -97,8 +97,6 @@ public final class RealApolloCall<T> implements ApolloQueryCall<T>, ApolloMutati
     refetchQueryNames = builder.refetchQueryNames;
     refetchQueries = builder.refetchQueries;
     tracker = builder.tracker;
-    optimisticUpdates = builder.optimisticUpdates;
-    useHttpGetMethodForQueries = builder.useHttpGetMethodForQueries;
 
     if ((refetchQueries.isEmpty() && refetchQueryNames.isEmpty()) || builder.apolloStore == null) {
       queryReFetcher = Optional.absent();
@@ -119,6 +117,8 @@ public final class RealApolloCall<T> implements ApolloQueryCall<T>, ApolloMutati
     }
     enableAutoPersistedQueries = builder.enableAutoPersistedQueries;
     interceptorChain = prepareInterceptorChain(operation);
+    optimisticUpdates = builder.optimisticUpdates;
+    useHttpGetMethodForQueries = builder.useHttpGetMethodForQueries;
   }
 
   @Override public void enqueue(@Nullable final Callback<T> responseCallback) {
