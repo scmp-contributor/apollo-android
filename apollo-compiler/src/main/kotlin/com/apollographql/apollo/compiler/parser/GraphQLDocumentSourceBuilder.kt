@@ -13,7 +13,7 @@ object GraphQLDocumentSourceBuilder {
       val variables = variableDefinitions()?.source ?: ""
       val directives = directives()?.source?.let { "$it " } ?: ""
       val fields = selectionSet()?.format(addTypeName = false)?.let { "{\n$it\n}" } ?: ""
-      return "$operationType $operationName$variables $directives$fields".withIndents
+      return "$operationType $operationName$variables $directives$fields"
     }
 
   val GraphQLParser.FragmentDefinitionContext.graphQLDocumentSource: String
@@ -22,7 +22,7 @@ object GraphQLDocumentSourceBuilder {
       val typeCondition = typeCondition().source
       val directives = directives()?.source?.let { "$it " } ?: ""
       val fields = selectionSet()?.format()?.let { "{\n$it\n}" } ?: ""
-      return "fragment $fragmentName on $typeCondition $directives$fields".withIndents
+      return "fragment $fragmentName on $typeCondition $directives$fields"
     }
 
   private val GraphQLParser.VariableDefinitionsContext.source: String
